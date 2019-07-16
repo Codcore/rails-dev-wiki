@@ -429,11 +429,13 @@ Error message and password prompt
 
 <li>errors</li>
 
+<li>How to restart Rails server?</li>
+
 <li>How to start Postgres</li>
 
 <li>New Tiddler</li>
 
-<li>Nginx failed to start/restart - what happens?</li>
+<li>Nginx failed to start/restart - how to determine problem?</li>
 
 <li>recipes</li>
 
@@ -10114,7 +10116,7 @@ Error message and password prompt
 <div created="20190711115954233" modified="20190711115956198" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditorToolbar</pre>
 </div>
-<div created="20190716183412644" list="$:/TagManager [[How to start Postgres]] [[Table of contents]]" modified="20190716183412644" title="$:/StoryList">
+<div created="20190716183412644" list="[[Table of contents]] [[Nginx failed to start/restart - how to determine problem?]]" modified="20190716184833818" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190711115913971" modified="20190711115913971" title="$:/temp/advancedsearch">
@@ -11008,6 +11010,13 @@ ssh-add ~/.ssh/id_rsa
 <div color="#ff6059" created="20190715143851548" modified="20190715143851548" title="errors">
 <pre></pre>
 </div>
+<div created="20190716184556907" modified="20190716184730211" tags="briefs rails" title="How to restart Rails server?">
+<pre>To quickly restart rails server, do following inside project dir with running Rails server:
+
+```
+$ touch tmp/restart.txt
+```</pre>
+</div>
 <div created="20190716183300974" modified="20190716183547943" tags="briefs postgres sql" title="How to start Postgres">
 <pre>To start postgresql server, run next command:
 
@@ -11018,7 +11027,7 @@ $ pg_ctl start  --pgdata='/usr/local/var/postgres'
 <div created="20190711114155803" modified="20190711114345122" tags="" title="New Tiddler">
 <pre></pre>
 </div>
-<div created="20190715143500026" modified="20190715173002942" tags="errors deployment nginx" title="Nginx failed to start/restart - what happens?">
+<div created="20190715143500026" modified="20190716184853280" tags="errors deployment nginx" title="Nginx failed to start/restart - how to determine problem?">
 <pre>If nginx failed to start, there are some useful commands to find out what happens:
 
 ```
@@ -11032,7 +11041,7 @@ $ sudo service nginx status
 <div color="#28ca41" created="20190711151811908" modified="20190715143905689" title="recipes">
 <pre></pre>
 </div>
-<div created="20190711120428560" modified="20190716183726121" tags="" title="Table of contents">
+<div created="20190711120428560" modified="20190716184809850" tags="" title="Table of contents">
 <pre>!!!''1. Ruby''
 &lt;hr&gt;
 
@@ -11045,6 +11054,9 @@ $ sudo service nginx status
 &lt;br&gt;
 
 !!!''2. Rails''
+
+!!!Briefs:&lt;&lt;list-links &quot;[tag[rails]tag[briefs]sort[title]]&quot;&gt;&gt;
+
 &lt;hr&gt;
 
 &lt;br&gt;
