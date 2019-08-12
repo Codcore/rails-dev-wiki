@@ -439,11 +439,7 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth</li>
 
-<li>ActiveModel: `has_secure_password`</li>
-
 <li>Add rsa key for SSH connection</li>
-
-<li>Adding `vuex` to the app</li>
 
 <li>api</li>
 
@@ -489,11 +485,7 @@ Error message and password prompt
 
 <li>Components: validation of input parameters</li>
 
-<li>Creating and using gemset</li>
-
 <li>Creating custom validations</li>
-
-<li>Creating models with strings attributes</li>
 
 <li>Creating own control</li>
 
@@ -535,13 +527,7 @@ Error message and password prompt
 
 <li>Filters</li>
 
-<li>Fix Vuetify toolbar height</li>
-
 <li>Functions</li>
-
-<li>GET and POST</li>
-
-<li>Global config</li>
 
 <li>Gurading routes</li>
 
@@ -560,8 +546,6 @@ Error message and password prompt
 <li>Installing `vue-router`</li>
 
 <li>Installing `vuelidate`</li>
-
-<li>Interceptors</li>
 
 <li>Interpolation</li>
 
@@ -588,8 +572,6 @@ Error message and password prompt
 <li>operator `in`</li>
 
 <li>operator `typeof`</li>
-
-<li>Optimization of store by dividing it to the modules</li>
 
 <li>Passing parameters to the method</li>
 
@@ -623,21 +605,7 @@ Error message and password prompt
 
 <li>Using `&lt;template&gt;` tag with `v-if` directive</li>
 
-<li>Using actions for asynchronous stuff</li>
-
 <li>Using component `router-link` for routing</li>
-
-<li>Using getters</li>
-
-<li>Using images from `assets`</li>
-
-<li>Using Material Design Icons</li>
-
-<li>Using mutations (setters)</li>
-
-<li>Using resource</li>
-
-<li>Using state</li>
 
 <li>Validating passwords</li>
 
@@ -10411,7 +10379,7 @@ Error message and password prompt
 <div created="20190711115954233" modified="20190711115956198" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditorToolbar</pre>
 </div>
-<div list="[[ActiveModel: `has_secure_password`]] [[Creating and using gemset]] [[Table of contents]]" title="$:/StoryList">
+<div created="20190801180312738" list="" modified="20190801180312738" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190711115913971" modified="20190724150605584" title="$:/temp/advancedsearch">
@@ -10466,7 +10434,7 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1200&quot;
+            &quot;text&quot;: &quot;1080&quot;
         }
     }
 }</pre>
@@ -11276,45 +11244,6 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190711120040683" modified="20190711120042493" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>1100px</pre>
 </div>
-<div created="20190812093820334" modified="20190812094107923" tags="api rails" title="ActiveModel: `has_secure_password`">
-<pre>Adds methods to set and authenticate against a BCrypt password. This mechanism requires you to have a `password_digest` attribute.
-
-The following validations are added automatically:
-
-* Password must be present on creation
-* Password length should be less than or equal to 72 bytes
-* Confirmation of password (using a password_confirmation attribute)
-
-If password confirmation validation is not needed, simply leave out the value for `password_confirmation` (i.e. don't provide a form field for it). When this attribute has a `nil` value, the validation will not be triggered.
-
-For further customizability, it is possible to suppress the default validations by passing `validations: false` as an argument.
-
-Add `bcrypt (~&gt; 3.1.7)` to `Gemfile` to use `has_secure_password`:
-
-```ruby
-gem 'bcrypt', '~&gt; 3.1.7'
-```
-A
-Example using Active Record (which automatically includes ActiveModel::SecurePassword):
-
-```ruby
-# Schema: User(name:string, password_digest:string)
-class User &lt; ActiveRecord::Base
-  has_secure_password
-end
-
-user = User.new(name: 'david', password: '', password_confirmation: 'nomatch')
-user.save                                                       # =&gt; false, password required
-user.password = 'mUc3m00RsqyRe'
-user.save                                                       # =&gt; false, confirmation doesn't match
-user.password_confirmation = 'mUc3m00RsqyRe'
-user.save                                                       # =&gt; true
-user.authenticate('notright')                                   # =&gt; false
-user.authenticate('mUc3m00RsqyRe')                              # =&gt; user
-User.find_by(name: 'david').try(:authenticate, 'notright')      # =&gt; false
-User.find_by(name: 'david').try(:authenticate, 'mUc3m00RsqyRe') # =&gt; user
-```</pre>
-</div>
 <div created="20190711115023363" modified="20190711120944358" tags="deployment ssh recipes" title="Add rsa key for SSH connection">
 <pre>Generate key:
 
@@ -11343,36 +11272,6 @@ ssh-add ~/.ssh/id_rsa
 
 
 </pre>
-</div>
-<div created="20190805202708755" modified="20190805202849312" tags="vuex recipes" title="Adding `vuex` to the app">
-<pre>`main.js`
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-import store from './store/index'
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h =&gt; h(App),
-  store
-}).$mount('#app')
-```
-
-`index.js`
-
-```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-
-})
-
-```</pre>
 </div>
 <div color="#941100" created="20190722153710538" modified="20190722153716767" title="api">
 <pre></pre>
@@ -12337,13 +12236,6 @@ arr['hello'] = 'world' // [0, 2, 3, hello: &quot;world&quot;]
 &lt;/style&gt;
 ```</pre>
 </div>
-<div created="20190812091028703" modified="20190812091251151" tags="briefs ruby" title="Creating and using gemset">
-<pre>Create gemset `recordstore`, use 2.5.3 Ruby for it, and switch to the created gemset (ruby version should be installed)
-
-```bash
-rvm use 2.5.3@recordstore --create
-```</pre>
-</div>
 <div created="20190801120217649" modified="20190801120247505" tags="vuelidate recipes" title="Creating custom validations">
 <pre>```xml
 &lt;template&gt;
@@ -12424,15 +12316,6 @@ rvm use 2.5.3@recordstore --create
 &lt;style&gt;
 &lt;/style&gt;
 ```</pre>
-</div>
-<div created="20190812090742052" modified="20190812091022457" tags="briefs rails" title="Creating models with strings attributes">
-<pre>By default all atributes has string type:
-
-```bash
-rails g model User email password_digest
-```
-
-Here `email` and `password_digest` are string attributes.</pre>
 </div>
 <div created="20190730154759344" modified="20190730154953760" tags="" title="Creating own control">
 <pre>By default, `v-model` passes a property called `value` to the component:
@@ -13450,40 +13333,6 @@ new Vue({
 
 ```</pre>
 </div>
-<div created="20190806141239625" modified="20190806141420840" tags="vuetify solutions" title="Fix Vuetify toolbar height">
-<pre>To fix Vuetify toolbar height, add outer div for `v-toolbar`:
-
-```xml
-&lt;template&gt;
-  &lt;v-app&gt;
-    &lt;v-navigation-drawer app temporary&gt;&lt;/v-navigation-drawer&gt;
-    &lt;!-- outer div --&gt;
-    &lt;div&gt;
-      &lt;v-toolbar app&gt;
-        &lt;v-app-bar-nav-icon&gt;&lt;/v-app-bar-nav-icon&gt;
-        &lt;v-toolbar-title&gt;Ad spot&lt;/v-toolbar-title&gt;
-        &lt;v-spacer&gt;&lt;/v-spacer&gt;
-        &lt;v-toolbar-items class=&quot;hidden-sm-and-down&quot;&gt;
-          &lt;v-btn text&gt;Link 1&lt;/v-btn&gt;
-          &lt;v-btn text&gt;Link 2&lt;/v-btn&gt;
-          &lt;v-btn text&gt;Link 3&lt;/v-btn&gt;
-        &lt;/v-toolbar-items&gt;
-      &lt;/v-toolbar&gt;
-    &lt;/div&gt;
-    &lt;v-content&gt;
-      &lt;router-view&gt;&lt;/router-view&gt;
-    &lt;/v-content&gt;
-  &lt;/v-app&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  export default {
-
-  }
-&lt;/script&gt;
-</pre>
-</div>
 <div created="20190722134042026" modified="20190722143817709" tags="briefs [[java script]]" title="Functions" type="text/vnd.tiddlywiki">
 <pre>* java script intepretator puts functions declarations to the top of the code.
 ```javascript
@@ -13520,162 +13369,6 @@ function func(param1, param2) {
   var result = param1 + param2
   */
 }</pre>
-</div>
-<div created="20190805194215579" modified="20190805194302808" tags="vue-resource recipes" title="GET and POST">
-<pre>```xml
-&lt;template&gt;
-  &lt;div class=&quot;container pt-2&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;name&quot;&gt;Car name&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; v-model.trim=&quot;carName&quot;&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;name&quot;&gt;Car year&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; v-model.number=&quot;carYear&quot;&gt;
-    &lt;/div&gt;
-
-    &lt;button class=&quot;btn btn-success mr-3&quot; @click=&quot;createCar&quot;&gt;Create car&lt;/button&gt;
-
-    &lt;button class=&quot;btn btn-primary&quot; @click=&quot;loadCars&quot;&gt;Load cars&lt;/button&gt;
-
-    &lt;hr&gt;
-
-    &lt;ul class=&quot;list-group&quot;&gt;
-      &lt;li v-for=&quot;car of cars&quot;
-          class=&quot;list-group-item&quot;
-          :key=&quot;car.id&quot;
-      &gt;&lt;strong&gt;{{ car.name }}&lt;/strong&gt; - {{ car.year }}&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  export default {
-    data () {
-      return {
-        carName: '',
-        carYear: 2018,
-        cars: []
-      }
-    },
-    methods: {
-      createCar () {
-        const car = {
-          name: this.carName,
-          year: this.carYear
-        }
-
-        this.$http.post('http://localhost:3000/cars', car)
-          .then(response =&gt; {
-            return response.json()
-          })
-          .then(newCar =&gt; {
-            console.log(newCar)
-          })
-      },
-      loadCars () {
-        this.$http.get('http://localhost:3000/cars')
-          .then(response =&gt; {
-            return response.json()
-          })
-          .then(cars =&gt; {
-            this.cars = cars
-          })
-      }
-    }
-  }
-
-&lt;/script&gt;
-
-&lt;style&gt;
-&lt;/style&gt;
-```</pre>
-</div>
-<div created="20190805195646941" modified="20190805200041165" tags="vue-resource recipes" title="Global config">
-<pre>`main.js`
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-import VueResource from 'vue-resource'
-
-Vue.config.productionTip = false
-Vue.use(VueResource)
-
-Vue.http.options.root = 'http://localhost:3000/'
-
-new Vue({
-  render: h =&gt; h(App),
-}).$mount('#app')
-
-```
-
-```xml
-&lt;template&gt;
-  &lt;div class=&quot;container pt-2&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;name&quot;&gt;Car name&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; v-model.trim=&quot;carName&quot;&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;name&quot;&gt;Car year&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; v-model.number=&quot;carYear&quot;&gt;
-    &lt;/div&gt;
-
-    &lt;button class=&quot;btn btn-success mr-3&quot; @click=&quot;createCar&quot;&gt;Create car&lt;/button&gt;
-
-    &lt;button class=&quot;btn btn-primary&quot; @click=&quot;loadCars&quot;&gt;Load cars&lt;/button&gt;
-
-    &lt;hr&gt;
-
-    &lt;ul class=&quot;list-group&quot;&gt;
-      &lt;li v-for=&quot;car of cars&quot;
-          class=&quot;list-group-item&quot;
-          :key=&quot;car.id&quot;
-      &gt;&lt;strong&gt;{{ car.name }}&lt;/strong&gt; - {{ car.year }}&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  export default {
-    data () {
-      return {
-        carName: '',
-        carYear: 2018,
-        cars: [],
-        resource: null
-      }
-    },
-    methods: {
-      createCar () {
-        const car = {
-          name: this.carName,
-          year: this.carYear
-        }
-
-        this.resource.save({}, car)
-      },
-      loadCars () {
-        this.resource.get().then(response =&gt; response.json())
-          .then(cars =&gt; this.cars = cars)
-      }
-    },
-    created() {
-      // http://localhost:3000/cars
-      this.resource = this.$resource('cars')
-    }
-  }
-
-&lt;/script&gt;
-
-&lt;style&gt;
-&lt;/style&gt;
-</pre>
 </div>
 <div created="20190801184832871" modified="20190801185132215" tags="vue-router recipes" title="Gurading routes">
 <pre>You can guard routes right in `routes.js`
@@ -14096,30 +13789,6 @@ Vue.use(Vuelidate)
 new Vue({
   render: h =&gt; h(App),
 }).$mount('#app')
-```</pre>
-</div>
-<div created="20190805200655064" modified="20190805200802227" tags="vue-resource recipes" title="Interceptors">
-<pre>Actually, interceptors are middlewares:
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-import VueResource from 'vue-resource'
-
-Vue.config.productionTip = false
-Vue.use(VueResource)
-
-Vue.http.options.root = 'http://localhost:3000/'
-
-Vue.http.interceptors.push(request =&gt; {
-
-  request.headers.set('Auth', 'TOKEN' + Math.random())
-})
-
-new Vue({
-  render: h =&gt; h(App),
-}).$mount('#app')
-
 ```</pre>
 </div>
 <div created="20190724135059827" modified="20190724135138224" tags="vue.js briefs" title="Interpolation">
@@ -14638,92 +14307,6 @@ typeof function(){} // &quot;function&quot;
 
 Результат `typeof null == &quot;object&quot;` – это официально признанная ошибка в языке, которая сохраняется для совместимости. На самом деле `null` – это не объект, а отдельный тип данных.</pre>
 </div>
-<div created="20190805223813821" modified="20190805225009494" tags="vuex recipes" title="Optimization of store by dividing it to the modules">
-<pre>`index.js`
-Before decomposition:
-
-```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  // state is object that describes state of the whole application
-  state: {
-    counter: 0
-  },
-  // here we can do some actions on the state, and then return data to components:
-  getters: {
-    computedCounter (state) {
-      return state.counter * Math.random()
-    }
-  },
-  mutations: {
-    // mutations doesn't allow any async actions
-    changeCounter (state, payload) {
-      state.counter += payload
-    }
-  },
-  // asynchronous stuff here
-  actions: {
-    asyncChangeCounter (context, payload) {
-      setTimeout(() =&gt; {
-        context.commit('changeCounter', payload.counterValue)
-      }, payload.timeoutDelay)
-    }
-  }
-})
-
-```
-
-After decomposition to the module:
-
-`index.js`
-
-```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-import counter from './counter'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  modules: {
-    // counter: counter
-    counter: counter
-  }
-})
-```
-
-`counter.js`
-
-```javascript
-export default {
-  state: {
-    counter: 0
-  },
-  mutations: {
-    changeCounter (state, payload) {
-      state.counter += payload
-    }
-  },
-  actions: {
-    asyncChangeCounter (context, payload) {
-      setTimeout(() =&gt; {
-        context.commit('changeCounter', payload.counterValue)
-      }, payload.timeoutDelay)
-    }
-  },
-  getters: {
-    computedCounter (state) {
-      return state.counter * Math.random()
-    }
-  }
-}
-```</pre>
-</div>
 <div created="20190724145302242" modified="20190724153121386" tags="vue.js briefs" title="Passing parameters to the method">
 <pre>You can pass parameters as usual you do in js, but for native elements, such as `this`, `event`, use dollar sign `$`:
 
@@ -15195,7 +14778,7 @@ export default new VueRouter({
 // 0, -0, null, NaN, undefinded, ''       =&gt; FALSE
 ```</pre>
 </div>
-<div created="20190711120428560" modified="20190806141237920" tags="" title="Table of contents">
+<div created="20190711120428560" modified="20190801121807759" tags="" title="Table of contents">
 <pre>!!!''1. Ruby''
 &lt;hr&gt;
 
@@ -15272,8 +14855,6 @@ export default new VueRouter({
 !!!Recipes:&lt;&lt;list-links &quot;[tag[vue.js]tag[recipes]sort[title]]&quot;&gt;&gt;
    *''Vuelidate'': &lt;&lt;list-links &quot;[tag[recipes]tag[vuelidate]sort[title]]&quot;&gt;&gt;
    *''Vue-router'': &lt;&lt;list-links &quot;[tag[recipes]tag[vue-router]sort[title]]&quot;&gt;&gt;
-   *''Vue-resource'': &lt;&lt;list-links &quot;[tag[recipes]tag[vue-resource]sort[title]]&quot;&gt;&gt;
-   *''Vuex'': &lt;&lt;list-links &quot;[tag[recipes]tag[vuex]sort[title]]&quot;&gt;&gt;
 !!!Solutions:&lt;&lt;list-links &quot;[tag[vue.js]tag[solutions]sort[title]]&quot;&gt;&gt;
 !!!Errors:&lt;&lt;list-links &quot;[tag[vue.js]tag[errors]sort[title]]&quot;&gt;&gt;
 
@@ -15286,18 +14867,7 @@ export default new VueRouter({
 !!!API:&lt;&lt;list-links &quot;[tag[deployment]tag[api]sort[title]]&quot;&gt;&gt;
 !!!Recipes:&lt;&lt;list-links &quot;[tag[deployment]tag[recipes]sort[title]]&quot;&gt;&gt;
 !!!Solutions:&lt;&lt;list-links &quot;[tag[deployment]tag[solutions]sort[title]]&quot;&gt;&gt;
-!!!Errors:&lt;&lt;list-links &quot;[tag[deployment]tag[errors]sort[title]]&quot;&gt;&gt;
-
-!!!''9. Vuetify''
-&lt;hr&gt;
-
-&lt;br&gt;
-
-!!!Briefs:&lt;&lt;list-links &quot;[tag[vuetify]tag[briefs]sort[title]]&quot;&gt;&gt;
-!!!API:&lt;&lt;list-links &quot;[tag[vuetify]tag[api]sort[title]]&quot;&gt;&gt;
-!!!Recipes:&lt;&lt;list-links &quot;[tag[vuetify]tag[recipes]sort[title]]&quot;&gt;&gt;
-!!!Solutions:&lt;&lt;list-links &quot;[tag[vuetify]tag[solutions]sort[title]]&quot;&gt;&gt;
-!!!Errors:&lt;&lt;list-links &quot;[tag[vuetify]tag[errors]sort[title]]&quot;&gt;&gt;</pre>
+!!!Errors:&lt;&lt;list-links &quot;[tag[deployment]tag[errors]sort[title]]&quot;&gt;&gt;</pre>
 </div>
 <div created="20190727111431029" modified="20190727111611968" tags="vue.js briefs" title="Tying up two Vue apps">
 <pre>```xml
@@ -15402,168 +14972,6 @@ export default new VueRouter({
 &lt;/html&gt;
 ```</pre>
 </div>
-<div created="20190805223349001" modified="20190805223754532" tags="vuex recipes" title="Using actions for asynchronous stuff">
-<pre>`App.vue`
-
-```xml
-&lt;template&gt;
-  &lt;div class=&quot;container text-center pt-5&quot;&gt;
-    &lt;app-counter&gt;&lt;/app-counter&gt;
-    &lt;hr&gt;
-    &lt;app-second-counter&gt;&lt;/app-second-counter&gt;
-    &lt;app-actions @counterUpdated=&quot;counter += $event&quot;&gt;&lt;/app-actions&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  import Counter from './components/Counter'
-  import Actions from './components/Actions';
-  import SecondCounter from './components/SecondCounter'
-
-  export default {
-    data() {
-      return {
-        counter: 0
-      }
-    },
-    components: {
-      appCounter: Counter,
-      appActions: Actions,
-      appSecondCounter: SecondCounter
-    }
-  }
-
-&lt;/script&gt;
-
-&lt;style&gt;
-&lt;/style&gt;
-
-```
-`Actions.vue`
-
-```xml
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;button class=&quot;btn btn-success mr-3&quot; @click=&quot;updateCounter(1)&quot;&gt;Add&lt;/button&gt;
-    &lt;button class=&quot;btn btn-danger&quot; @click=&quot;updateCounter(-1)&quot;&gt;Substract&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    methods: {
-      updateCounter(val) {
-        this.$store.dispatch('asyncChangeCounter', {
-          counterValue: val,
-          timeoutDelay: 200
-        })
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`Counter.vue`
-
-```xml
-&lt;template&gt;
-  &lt;h2&gt;Counter {{ counter }}&lt;/h2&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    computed: {
-      counter () {
-        return this.$store.getters.computedCounter
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`SecondCounter.vue`
-
-```xml
-&lt;template&gt;
-  &lt;h2&gt;Second counter {{ counter }}&lt;/h2&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    computed: {
-      counter () {
-        return this.$store.state.counter
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`index.js`
-
-```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  // state is object that describes state of the whole application
-  state: {
-    counter: 0
-  },
-  // here we can do some actions on the state, and then return data to components:
-  getters: {
-    computedCounter (state) {
-      return state.counter * Math.random()
-    }
-  },
-  mutations: {
-    // mutations doesn't allow any async actions
-    changeCounter (state, payload) {
-      state.counter += payload
-    }
-  },
-  // asynchronous stuff here
-  actions: {
-    asyncChangeCounter (context, payload) {
-      setTimeout(() =&gt; {
-        context.commit('changeCounter', payload.counterValue)
-      }, payload.timeoutDelay)
-    }
-  }
-})
-
-```
-
-`main.js`
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-import store from './store/index'
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h =&gt; h(App),
-  store
-}).$mount('#app')
-```</pre>
-</div>
 <div created="20190801125739619" modified="20190801125923689" tags="vue-router recipes" title="Using component `router-link` for routing">
 <pre>```xml
 &lt;template&gt;
@@ -15590,588 +14998,6 @@ new Vue({
 
 &lt;style&gt;
 &lt;/style&gt;
-```</pre>
-</div>
-<div created="20190805204750670" modified="20190805205041371" tags="vuex recipes" title="Using getters">
-<pre>`App.vue`
-
-```xml
-&lt;template&gt;
-  &lt;div class=&quot;container text-center pt-5&quot;&gt;
-    &lt;app-counter&gt;&lt;/app-counter&gt;
-    &lt;hr&gt;
-    &lt;app-second-counter&gt;&lt;/app-second-counter&gt;
-    &lt;app-actions @counterUpdated=&quot;counter += $event&quot;&gt;&lt;/app-actions&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  import Counter from './components/Counter'
-  import Actions from './components/Actions';
-  import SecondCounter from './components/SecondCounter'
-
-  export default {
-    data() {
-      return {
-        counter: 0
-      }
-    },
-    components: {
-      appCounter: Counter,
-      appActions: Actions,
-      appSecondCounter: SecondCounter
-    }
-  }
-
-&lt;/script&gt;
-
-&lt;style&gt;
-&lt;/style&gt;
-```
-
-`Counter.vue`
-
-```xml
-&lt;template&gt;
-  &lt;h2&gt;Counter {{ counter }}&lt;/h2&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    computed: {
-      counter () {
-        return this.$store.getters.computedCounter
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`SecondCounter.vue`
-
-```xml
-&lt;template&gt;
-  &lt;h2&gt;Second counter {{ counter }}&lt;/h2&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    computed: {
-      counter () {
-        return this.$store.state.counter
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`Actions.vue`
-
-```xml
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;button class=&quot;btn btn-success mr-3&quot; @click=&quot;updateCounter(1)&quot;&gt;Add&lt;/button&gt;
-    &lt;button class=&quot;btn btn-danger&quot; @click=&quot;updateCounter(-1)&quot;&gt;Substract&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    methods: {
-      updateCounter(val) {
-        this.$store.state.counter += val
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`index.js`
-
-```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  // state is object that describes state of the whole application
-  state: {
-    counter: 0
-  },
-  // here we can do some actions on the state, and then return data to components:
-  getters: {
-    computedCounter (state) {
-      return state.counter * Math.random()
-    }
-  }
-})
-
-```
-
-`main.js`
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-import store from './store/index'
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h =&gt; h(App),
-  store
-}).$mount('#app')
-```</pre>
-</div>
-<div created="20190809073523765" modified="20190809073629133" tags="vue.js solutions" title="Using images from `assets`">
-<pre>```xml
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;v-container fluid&gt;
-      &lt;v-layout row&gt;
-        &lt;v-flex xs12&gt;
-          &lt;v-carousel cycle continuous&gt;
-            &lt;v-carousel-item v-for=&quot;slide in slides&quot; :key=&quot;slide.id&quot;&gt;
-              &lt;v-sheet
-                      :color=&quot;slide.color&quot;
-                      height=&quot;100%&quot;
-                      tile
-              &gt;
-                &lt;v-layout
-                        align-center
-                        fill-height
-                        justify-center
-                &gt;
-                  &lt;div class=&quot;display-3&quot;&gt;{{ slide.text }}&lt;/div&gt;
-                &lt;/v-layout&gt;
-              &lt;/v-sheet&gt;
-            &lt;/v-carousel-item&gt;
-          &lt;/v-carousel&gt;
-        &lt;/v-flex&gt;
-      &lt;/v-layout&gt;
-    &lt;/v-container&gt;
-    &lt;v-container&gt;
-      &lt;v-layout row&gt;
-        &lt;v-flex
-                xs12
-                v-for=&quot;ad of ads&quot;
-                :key=&quot;ad.id&quot;
-        &gt;
-          &lt;v-card
-                  class=&quot;mx-auto&quot;
-                  max-width=&quot;400&quot;
-          &gt;
-            &lt;v-img
-                    class=&quot;white--text&quot;
-                    height=&quot;200px&quot;
-                    :src=&quot;ad.imageSrc&quot;
-            &gt;
-              &lt;v-card-title class=&quot;align-end fill-height&quot;&gt;{{ ad.title }}&lt;/v-card-title&gt;
-            &lt;/v-img&gt;
-
-            &lt;v-card-text&gt;
-              &lt;span&gt;Number {{ ad.id }}&lt;/span&gt;&lt;br&gt;
-              &lt;span class=&quot;text--primary&quot;&gt;
-        &lt;span&gt;{{ ad.text }}&lt;/span&gt;
-      &lt;/span&gt;
-            &lt;/v-card-text&gt;
-
-            &lt;v-card-actions&gt;
-              &lt;v-btn
-                      text
-                      color=&quot;orange&quot;
-              &gt;
-                Share
-              &lt;/v-btn&gt;
-              &lt;v-btn
-                      text
-                      color=&quot;orange&quot;
-              &gt;
-                Explore
-              &lt;/v-btn&gt;
-            &lt;/v-card-actions&gt;
-          &lt;/v-card&gt;
-        &lt;/v-flex&gt;
-      &lt;/v-layout&gt;
-    &lt;/v-container&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    data () {
-      return {
-        slides: [
-          { color: 'primary', text: 'Place ads for free. Forever.' , id: 1},
-          { color: 'secondary', text: 'Find your desire for acceptable price.', id: 2},
-          { color: 'orange', text: 'Sell junk and make money.', id: 3},
-        ],
-        ads: [
-          { id: 1, imageSrc: require('@/assets/img/ads/1.jpg'), title: 'Why do we use it?', text: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.'},
-          { id: 2, imageSrc: require('@/assets/img/ads/2.jpg'), title: 'Where can I get some?', text: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. '},
-          { id: 3, imageSrc: require('@/assets/img/ads/3.jpg'), title: 'Where does it come from?', text: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. '},
-          { id: 4, imageSrc: require('@/assets/img/ads/4.jpg'), title: 'What is Lorem Ipsum?', text: 'This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.'},
-        ],
-        publicPath: process.env.BASE_URL
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```</pre>
-</div>
-<div created="20190806142758770" modified="20190806143007479" tags="vuetify solutions" title="Using Material Design Icons">
-<pre>To properly use MDI icons, append `mdi-` prefix for icon name:
-
-```xml
-&lt;v-btn text&gt;
-  &lt;!-- icon name is `account-circle-outline` --&gt;
-  &lt;v-icon&gt;mdi-account-circle-outline&lt;/v-icon&gt;Link 1
-&lt;/v-btn&gt;</pre>
-</div>
-<div created="20190805210457820" modified="20190805210557154" tags="vuex recipes" title="Using mutations (setters)">
-<pre>`App.vue`
-
-```xml
-&lt;template&gt;
-  &lt;div class=&quot;container text-center pt-5&quot;&gt;
-    &lt;app-counter&gt;&lt;/app-counter&gt;
-    &lt;hr&gt;
-    &lt;app-second-counter&gt;&lt;/app-second-counter&gt;
-    &lt;app-actions @counterUpdated=&quot;counter += $event&quot;&gt;&lt;/app-actions&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  import Counter from './components/Counter'
-  import Actions from './components/Actions';
-  import SecondCounter from './components/SecondCounter'
-
-  export default {
-    data() {
-      return {
-        counter: 0
-      }
-    },
-    components: {
-      appCounter: Counter,
-      appActions: Actions,
-      appSecondCounter: SecondCounter
-    }
-  }
-
-&lt;/script&gt;
-
-&lt;style&gt;
-&lt;/style&gt;
-```
-
-`Counter.vue`
-
-```xml
-&lt;template&gt;
-  &lt;h2&gt;Counter {{ counter }}&lt;/h2&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    computed: {
-      counter () {
-        return this.$store.getters.computedCounter
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`SecondCounter.vue`
-
-```xml
-&lt;template&gt;
-  &lt;h2&gt;Second counter {{ counter }}&lt;/h2&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    computed: {
-      counter () {
-        return this.$store.state.counter
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`Actions.vue`
-
-```xml
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;button class=&quot;btn btn-success mr-3&quot; @click=&quot;updateCounter(1)&quot;&gt;Add&lt;/button&gt;
-    &lt;button class=&quot;btn btn-danger&quot; @click=&quot;updateCounter(-1)&quot;&gt;Substract&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    methods: {
-      updateCounter(val) {
-        this.$store.commit('changeCounter', val)      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`index.js`
-
-```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  // state is object that describes state of the whole application
-  state: {
-    counter: 0
-  },
-  // here we can do some actions on the state, and then return data to components:
-  getters: {
-    computedCounter (state) {
-      return state.counter * Math.random()
-    }
-  },
-  mutations: {
-    // mutations doesn't allow any async actions
-    changeCounter (state, payload) {
-      state.counter += payload
-    }
-  }
-})
-
-```
-
-`main.js`
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-import store from './store/index'
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h =&gt; h(App),
-  store
-}).$mount('#app')
-```</pre>
-</div>
-<div created="20190805195459376" modified="20190805195535563" tags="vue-resource recipes" title="Using resource">
-<pre>```xml
-&lt;template&gt;
-  &lt;div class=&quot;container pt-2&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;name&quot;&gt;Car name&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; v-model.trim=&quot;carName&quot;&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;name&quot;&gt;Car year&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; v-model.number=&quot;carYear&quot;&gt;
-    &lt;/div&gt;
-
-    &lt;button class=&quot;btn btn-success mr-3&quot; @click=&quot;createCar&quot;&gt;Create car&lt;/button&gt;
-
-    &lt;button class=&quot;btn btn-primary&quot; @click=&quot;loadCars&quot;&gt;Load cars&lt;/button&gt;
-
-    &lt;hr&gt;
-
-    &lt;ul class=&quot;list-group&quot;&gt;
-      &lt;li v-for=&quot;car of cars&quot;
-          class=&quot;list-group-item&quot;
-          :key=&quot;car.id&quot;
-      &gt;&lt;strong&gt;{{ car.name }}&lt;/strong&gt; - {{ car.year }}&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  export default {
-    data () {
-      return {
-        carName: '',
-        carYear: 2018,
-        cars: [],
-        resource: null
-      }
-    },
-    methods: {
-      createCar () {
-        const car = {
-          name: this.carName,
-          year: this.carYear
-        }
-
-        this.resource.save({}, car)
-      },
-      loadCars () {
-        this.resource.get().then(response =&gt; response.json())
-          .then(cars =&gt; this.cars = cars)
-      }
-    },
-    created() {
-      this.resource = this.$resource('http://localhost:3000/cars')
-    }
-  }
-
-&lt;/script&gt;
-
-&lt;style&gt;
-&lt;/style&gt;
-```</pre>
-</div>
-<div created="20190805203515024" modified="20190805205111933" tags="vuex recipes" title="Using state">
-<pre>`App.vue`
-
-```xml
-&lt;template&gt;
-  &lt;div class=&quot;container text-center pt-5&quot;&gt;
-    &lt;app-counter&gt;&lt;/app-counter&gt;
-    &lt;app-actions @counterUpdated=&quot;counter += $event&quot;&gt;&lt;/app-actions&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-
-  import Counter from './components/Counter'
-  import Actions from './components/Actions';
-
-  export default {
-    data() {
-      return {
-        counter: 0
-      }
-    },
-    components: {
-      AppCounter: Counter,
-      AppActions: Actions
-    }
-  }
-
-&lt;/script&gt;
-
-&lt;style&gt;
-&lt;/style&gt;
-
-```
-
-`Counter.vue`
-
-```xml
-&lt;template&gt;
-  &lt;h2&gt;Counter {{ counter }}&lt;/h2&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    computed: {
-      counter () {
-        return this.$store.state.counter
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`Actions.vue`
-
-```xml
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;button class=&quot;btn btn-success mr-3&quot; @click=&quot;updateCounter(1)&quot;&gt;Add&lt;/button&gt;
-    &lt;button class=&quot;btn btn-danger&quot; @click=&quot;updateCounter(-1)&quot;&gt;Substract&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  export default {
-    methods: {
-      updateCounter(val) {
-        this.$store.state.counter += val
-      }
-    }
-  }
-&lt;/script&gt;
-
-&lt;style scoped&gt;
-
-&lt;/style&gt;
-```
-
-`index.js`
-
-```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  // state is object that describes state of the whole application
-  state: {
-    counter: 0
-  }
-})
-```
-
-`main.js`
-
-```javascript
-import Vue from 'vue'
-import App from './App.vue'
-import store from './store/index'
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h =&gt; h(App),
-  store
-}).$mount('#app')
 ```</pre>
 </div>
 <div created="20190801113047607" modified="20190801113125058" tags="vuelidate recipes" title="Validating passwords">
