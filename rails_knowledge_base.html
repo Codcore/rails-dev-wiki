@@ -439,7 +439,11 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth</li>
 
+<li>ActiveModel `has_many dependent: option`</li>
+
 <li>ActiveModel: `has_secure_password`</li>
+
+<li>ActiveSupport: `resque_from`</li>
 
 <li>Add rsa key for SSH connection</li>
 
@@ -464,6 +468,8 @@ Error message and password prompt
 <li>attribute `ref`</li>
 
 <li>briefs</li>
+
+<li>Change git commit message</li>
 
 <li>Changing inline styles dynamically</li>
 
@@ -496,6 +502,8 @@ Error message and password prompt
 <li>Creating models with strings attributes</li>
 
 <li>Creating own control</li>
+
+<li>Deleting gemset</li>
 
 <li>directive `v-bind`</li>
 
@@ -603,13 +611,27 @@ Error message and password prompt
 
 <li>property `watch`</li>
 
+<li>Rails 5.2 and Ruby 2.4/2.5 not working with `mysql2` gem</li>
+
 <li>Rails caching not being logged</li>
+
+<li>Rails generators commands</li>
+
+<li>Rails routing</li>
+
+<li>Rails validations</li>
+
+<li>Rails/Ruby compatability</li>
 
 <li>recipes</li>
 
 <li>Redirecting and 404 page</li>
 
+<li>Setting up `jwt_sessions` gem</li>
+
 <li>Shortcuts for directives</li>
+
+<li>Shoulda matchers - testing validations</li>
 
 <li>Showing validation errors</li>
 
@@ -10405,13 +10427,13 @@ Error message and password prompt
 <div created="20190715130925659" modified="20190715143734176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20190711113058372" modified="20190731213048963" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20190711113058372" modified="20190812142143316" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20190711115954233" modified="20190711115956198" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditorToolbar</pre>
 </div>
-<div list="[[ActiveModel: `has_secure_password`]] [[Creating and using gemset]] [[Table of contents]]" title="$:/StoryList">
+<div created="20190819160141267" list="[[Shoulda matchers - testing validations]] [[Rails routing]] [[Rails validations]] [[Rails 5.2 and Ruby 2.4/2.5 not working with `mysql2` gem]] [[Deleting gemset]] [[Creating and using gemset]] [[Table of contents]]" modified="20190819160141267" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190711115913971" modified="20190724150605584" title="$:/temp/advancedsearch">
@@ -11149,7 +11171,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190722140822464" modified="20190722140823015" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>hig</pre>
 </div>
-<div created="20190718113031692" modified="20190801134316016" title="$:/temp/search">
+<div created="20190718113031692" modified="20190819160148214" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20190722140826603" modified="20190722140826603" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.19/index.html" url="https://tiddlywiki.com/library/v5.1.19/index.html">
@@ -11276,6 +11298,29 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190711120040683" modified="20190711120042493" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>1100px</pre>
 </div>
+<div created="20190812101435593" modified="20190812101916859" tags="rails api" title="ActiveModel `has_many dependent: option`">
+<pre>Controls what happens to the associated objects when their owner is destroyed. Note that these are implemented as callbacks, and Rails executes callbacks in order. Therefore, other similar callbacks may affect the `:dependent` behavior, and the `:dependent` behavior may affect other callbacks.
+
+* `:destroy` causes all the associated objects to also be destroyed.
+* `:delete_all` causes all the associated objects to be deleted directly from the database (so callbacks will not be executed).
+* `:nullify causes` the foreign keys to be set to `NULL`. Callbacks are not executed.
+* `:restrict_with_exception` causes an exception to be raised if there are any associated records.
+* `:restrict_with_error` causes an error to be added to the owner if there are any associated objects.
+
+If using with the `:through` option, the association on the join model must be a `#belongs_to`, and the records which get deleted are the join records, rather than the associated records.
+
+If using `dependent: :destroy` on a scoped association, only the scoped objects are destroyed. For example, if a `Post` model defines `has_many :comments, -&gt; { where published: true }, dependent: :destroy` and `destroy` is called on a post, only published comments are destroyed. This means that any unpublished comments in the database would still contain a foreign key pointing to the now deleted post.
+
+```ruby
+class Artist &lt; ApplicationRecord
+  belongs_to :user
+  has_many :records, dependent: :destroy
+end
+```
+
+
+</pre>
+</div>
 <div created="20190812093820334" modified="20190812094107923" tags="api rails" title="ActiveModel: `has_secure_password`">
 <pre>Adds methods to set and authenticate against a BCrypt password. This mechanism requires you to have a `password_digest` attribute.
 
@@ -11313,6 +11358,38 @@ user.authenticate('notright')                                   # =&gt; false
 user.authenticate('mUc3m00RsqyRe')                              # =&gt; user
 User.find_by(name: 'david').try(:authenticate, 'notright')      # =&gt; false
 User.find_by(name: 'david').try(:authenticate, 'mUc3m00RsqyRe') # =&gt; user
+```</pre>
+</div>
+<div created="20190812131454038" modified="20190812131825115" tags="rails api" title="ActiveSupport: `resque_from`">
+<pre>```ruby
+rescue_from(*klasses, with: nil, &amp;block) public
+```
+
+Rescue exceptions raised in controller actions.
+
+`rescue_from` receives a series of exception classes or class names, and a trailing `:with` option with the name of a method or a `Proc` object to be called to handle them. Alternatively a block can be given.
+
+Handlers that take one argument will be called with the exception, so that the exception can be inspected when dealing with it.
+
+Handlers are inherited. They are searched from right to left, from bottom to top, and up the hierarchy. The handler of the first class for which `exception.is_a?(klass)` holds true is the one invoked, if any.
+
+```ruby
+class ApplicationController &lt; ActionController::Base
+  rescue_from User::NotAuthorized, with: :deny_access # self defined exception
+  rescue_from ActiveRecord::RecordInvalid, with: :show_errors
+
+  rescue_from 'MyAppError::Base' do |exception|
+    render xml: exception, status: 500
+  end
+
+  private
+    def deny_access
+      ...
+    end
+
+    def show_errors(exception)
+      exception.record.new_record? ? ...
+    end
 ```</pre>
 </div>
 <div created="20190711115023363" modified="20190711120944358" tags="deployment ssh recipes" title="Add rsa key for SSH connection">
@@ -11591,6 +11668,11 @@ arr['hello'] = 'world' // [0, 2, 3, hello: &quot;world&quot;]
 </div>
 <div color="#0084ff" created="20190716183423166" modified="20190716183423166" title="briefs">
 <pre></pre>
+</div>
+<div created="20190812135735250" modified="20190812135839625" tags="git briefs" title="Change git commit message">
+<pre>```bash
+git commit --amend
+```</pre>
 </div>
 <div created="20190726093748311" modified="20190726095554339" tags="vue.js briefs" title="Changing inline styles dynamically">
 <pre>```xml
@@ -12533,6 +12615,11 @@ Here `email` and `password_digest` are string attributes.</pre>
   }
 
 &lt;/style&gt;
+```</pre>
+</div>
+<div created="20190819163544214" modified="20190819163629888" tags="ruby briefs" title="Deleting gemset">
+<pre>```
+rvm gemset delete time_tracker
 ```</pre>
 </div>
 <div created="20190724140305796" modified="20190726091522134" tags="vue.js api" title="directive `v-bind`">
@@ -15050,12 +15137,164 @@ export default new VueRouter({
 &lt;/html&gt;
 ```</pre>
 </div>
+<div created="20190819174158401" modified="20190819174341100" tags="rails errors" title="Rails 5.2 and Ruby 2.4/2.5 not working with `mysql2` gem">
+<pre>I have downgraded `mysql` to `0.4.10` and it works. But none of higher versions works with `Rails 5.2.2.1` and `Ruby 2.4.x/2.5.x`.</pre>
+</div>
 <div created="20190718110822770" list="" modified="20190718111250712" tags="rails solutions" title="Rails caching not being logged">
 <pre>In `Rails 5` caching by default is not logged. To enable cache logging, add next line to your environment setup file:
 
 ```
 config.action_controller.enable_fragment_cache_logging = true
 ```</pre>
+</div>
+<div created="20190812094631953" modified="20190812095405465" tags="briefs rails" title="Rails generators commands">
+<pre>To create model Artist and controllers, tests and views for it:
+
+```bash
+rails g scaffold Artist name
+```
+
+&lt;br&gt;
+
+To undo created files by `scaffold`, you can use `destroy` command, or shortly, `d`:
+
+```bash
+rails d scaffold Artist
+```
+
+&lt;br&gt;
+
+To make reference to the foreign key `id` while creating a model:
+
+```bash
+rails g scaffold Artist name:string user:references
+```</pre>
+</div>
+<div created="20190820094520523" modified="20190820094612576" tags="rails briefs" title="Rails routing">
+<pre>```ruby
+get 'users/new' =&gt; 'users#new', as: :new_user #named path
+```</pre>
+</div>
+<div created="20190820091938259" modified="20190820092041500" tags="rails briefs" title="Rails validations">
+<pre>```ruby
+class User &lt; ApplicationRecord
+  validates :email, :name, :surname, presence: true
+  validates :email, uniqueness: true
+end
+```</pre>
+</div>
+<div created="20190819165436013" modified="20190819170224460" tags="rails briefs" title="Rails/Ruby compatability">
+<pre>!! Rails 3.0
+&lt;hr&gt;
+
+1.8.7
+
+1.9.2
+
+1.9.3
+
+!! Rails 3.1
+&lt;hr&gt;
+
+1.8.7
+
+1.9.2
+
+1.9.3
+
+!! Rails 3.2
+&lt;hr&gt;
+
+1.8.7
+
+1.9.2
+
+1.9.3
+
+2.0.0
+
+2.1.8
+
+2.2.6
+
+2.3.3
+
+!!Rails 4.0
+&lt;hr&gt;
+
+1.9.3
+
+2.0.0
+
+2.1
+
+2.2
+
+!! Rails 4.1
+&lt;hr&gt;
+
+1.9.3
+
+2.0.0
+
+2.1
+
+2.2.4
+
+2.3.0
+
+!! Rails 4.2
+&lt;hr&gt;
+
+1.9.3
+
+2.0.0-p648
+
+2.1.10
+
+2.2.10
+
+2.3.8
+
+2.4.5
+
+!! Rails 5.0
+&lt;hr&gt;
+
+2.2.10
+
+2.3.8
+
+2.4.5
+
+!! Rails 5.1
+&lt;hr&gt;
+
+2.2.10
+
+2.3.7
+
+2.4.4
+
+2.5.1
+
+!! Rails 5.2
+&lt;hr&gt;
+
+2.2.10
+
+2.3.7
+
+2.4.4
+
+2.5.1
+
+!! Rails 6.0
+&lt;hr&gt;
+
+2.5.3
+
+2.6.0</pre>
 </div>
 <div color="#28ca41" created="20190711151811908" modified="20190715143905689" title="recipes">
 <pre></pre>
@@ -15118,6 +15357,133 @@ export default new VueRouter({
 })
 ```</pre>
 </div>
+<div created="20190812131906448" modified="20190812142227320" tags="rails recipes" title="Setting up `jwt_sessions` gem">
+<pre>1. First, we add `gem jwt_sessions` to the `Gemfile` and run `bundle install`.
+
+2. Setting up `ApplicationController`:
+
+```ruby
+class ApplicationController &lt; ActionController::API
+  include JWTSessions::RailsAuthorization
+  rescue_from JWTSessions::Errors::Unauthorized, with :not_authorized
+
+  private
+
+    def current_user
+      # payload is going from JWTSessions
+      @current_user ||= User.find(payload['user'])
+    end
+
+    def not_authorized
+      render json: { error: 'Not authorized' }, status: :unauthorized
+    end
+end
+
+```
+
+3. Then, create `/config/initializers/jwt_sessions.rb` with ecnryption key (should be safely stored in production):
+
+```ruby
+JWTSessions.encryption_key = 'andrew_mark'
+```
+
+4. Uncomment next lines in `/config/initializers/cors.rb` (you should previosly install `rack-cors` gem:
+
+```ruby
+# Be sure to restart your server when you modify this file.
+
+# Avoid CORS issues when API is called from the frontend app.
+# Handle Cross-Origin Resource Sharing (CORS) in order to accept cross-origin AJAX requests.
+
+# Read more: https://github.com/cyu/rack-cors
+
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    # domains for allowed apps
+    origins 'http://localhost:8080'
+
+    resource '*',
+      headers: :any,
+      # Sets the Access-Control-Allow-Credentials response header
+      credentials: true,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+end
+```
+
+5. Create `SignupController`:
+
+```ruby
+class SignupController &lt; ApplicationController
+  def create
+    user = User.new(user_params)
+
+    if user.save
+      payload = { user_id: user.id }
+      session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
+      tokens = session.login
+
+      response.set_cookie(JWTSessions.acces_cookie,
+                          value: tokens[:access],
+                          http_only: true,
+                          secure: false
+                          )
+
+      render json: { csrf: tokens[:csrf] }
+    else
+      render json: { error: user.errors.full_messages.join('\n'), status: :unprocessable_entity }
+    end
+  end
+
+  private
+
+    def user_params
+      params.permit(:email, :password, :password_confirmation)
+    end
+end
+```
+
+6. Create `SigninController`:
+
+```ruby
+class SigninController &lt; ApplicationController
+  # it's like a Devise `authenticate!` method
+  before_action :authorize_access_request!, only: [:destroy]
+
+  def create
+    user = User.find_by(email: params[:email])
+
+    # `authenticate` comes from `bcrypt` gem
+    if user.authenticate(params[:password])
+      payload = { user_id: user.id }
+      session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
+      tokens = session.login
+      response.set_cookie(JWTSessions.access_cookie,
+                          value: tokens[:access],
+                          http_only: true,
+                          secure: false)
+      render json: { csrf: tokens[:csrf] }
+    else
+      not_authorized
+    end
+  end
+
+  def destroy
+    session = JWTSessions::Session.new(payload: payload)
+    session.flush_by_access_payload
+    render json: :ok
+  end
+
+  private
+
+    def not_found
+      render json: { error: &quot;Cannot find email/password combination&quot; }, status: :not_found
+    end
+end
+```
+
+</pre>
+</div>
 <div created="20190725152044774" modified="20190725152539587" tags="vue.js briefs" title="Shortcuts for directives">
 <pre>Some often used directives have shortcuts:
 
@@ -15126,6 +15492,12 @@ export default new VueRouter({
 &lt;button @click=&quot;counter++&quot;&gt;Increase&lt;/button&gt; &lt;!-- &lt;button v-on:click=&quot;counter++&quot;&gt;Increase&lt;/button&gt; --&gt;
 ```
 </pre>
+</div>
+<div created="20190820132310119" modified="20190820132515228" tags="rails briefs" title="Shoulda matchers - testing validations">
+<pre>```ruby
+  it { should validate_presence_of :surname } # validates :surname, presence: true
+  it { should validate_length_of(:password).is_at_least(6) } # validates :password, length: { minimum: 6 }
+```</pre>
 </div>
 <div created="20190801110122528" modified="20190801110219213" tags="vuelidate recipes" title="Showing validation errors">
 <pre>Showing validation errors with bootstrap:
